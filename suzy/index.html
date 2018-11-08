@@ -1,0 +1,106 @@
+
+<html>
+<header>
+  <script type="text/javascript" src="inc/echarts.min.js"></script>
+</header>
+
+<main>
+  
+  Logica: <input id="logica" onChange="att();" /> <br />
+  Linguistica: <input id="linguistica" onChange="att();" /> <br />
+  Corporal: <input id="corporal" onChange="att();" /> <br />
+  Musical: <input id="musical" onChange="att();" /> <br />
+  Espacial: <input id="espacial" onChange="att();" /> <br />
+  Naturalista: <input id="naturalista" onChange="att();" /> <br />
+  Interpessoal: <input id="interpessoal" onChange="att();" /> <br />
+  Intrapessoal: <input id="intrapessoal" onChange="att();" /> <br />
+
+    <div id="container"></div>
+    <style type="text/css">
+    #container	{
+      width: 750px;
+      height: 750px;
+    }
+    </style>
+
+	<script>
+        function att(){
+            var logica, linguistica, corporal, musical, espacial, naturalista, interpessoal, intrapessoal;
+            logica = (document.getElementById('logica').value != '') ? document.getElementById('logica').value : 5;
+            linguistica = (document.getElementById('linguistica').value != '') ? document.getElementById('linguistica').value : 5;
+            corporal = (document.getElementById('corporal').value != '') ? document.getElementById('corporal').value : 5;
+            musical = (document.getElementById('musical').value != '') ? document.getElementById('musical').value : 5;
+            espacial = (document.getElementById('espacial').value != '') ? document.getElementById('espacial').value : 5;
+            naturalista = (document.getElementById('naturalista').value != '') ? document.getElementById('naturalista').value : 5;
+            interpessoal = (document.getElementById('interpessoal').value != '') ? document.getElementById('interpessoal').value : 5;
+            intrapessoal = (document.getElementById('intrapessoal').value != '') ? document.getElementById('intrapessoal').value : 5;
+            myChart.setOption({
+            series: [
+                {
+                    name: 'Inteligencias',
+                    type: 'radar',
+                    data : [
+                        {
+                            value : [logica, linguistica, corporal, musical, espacial, naturalista, interpessoal, intrapessoal],
+                            name : 'SuzyPoints'
+                        }
+                    ]
+                }
+            ]
+            });
+
+        };
+  var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+
+option = {
+    title: {
+        text: '8 inteligencias'
+    },
+    tooltip: {},
+    legend: {
+        data: ['SuzyPoints']
+    },
+    radar: {
+        // shape: 'circle',
+        name: {
+            textStyle: {
+                color: '#fff',
+                backgroundColor: '#999',
+                borderRadius: 3,
+                padding: [3, 5]
+           }
+        },
+        indicator: [
+           { name: 'Logica', max: 10},
+           { name: 'Linguistica', max: 10},
+           { name: 'Corporal', max: 10},
+           { name: 'Musical', max: 10},
+           { name: 'Espacial', max: 10},
+           { name: 'Naturalista', max: 10},
+           { name: 'Interpessoal', max: 10},
+           { name: 'Intrapessoal', max: 10}
+        ]
+    },
+    series: [{
+        name: 'Inteligencias',
+        type: 'radar',
+        // areaStyle: {normal: {}},
+        data : [
+            {
+                value : [Math.floor((Math.random() * 10) + 1), Math.floor((Math.random() * 10) + 1), Math.floor((Math.random() * 10) + 1), Math.floor((Math.random() * 10) + 1), 
+                         Math.floor((Math.random() * 10) + 1), Math.floor((Math.random() * 10) + 1), Math.floor((Math.random() * 10) + 1), Math.floor((Math.random() * 10) + 1)],
+                name : 'SuzyPoints'
+            }
+        ]
+    }]
+};
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+
+</script>
+
+</html>
